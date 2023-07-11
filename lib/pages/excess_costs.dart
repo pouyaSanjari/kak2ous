@@ -15,6 +15,7 @@ class ExcessCosts extends StatelessWidget {
         resizeToAvoidBottomInset: false,
         appBar: AppBar(title: const Text('لیست هزینه های مازاد')),
         floatingActionButton: FloatingActionButton(
+          heroTag: 'a',
           child: const Icon(Icons.add),
           onPressed: () {
             var name = TextEditingController();

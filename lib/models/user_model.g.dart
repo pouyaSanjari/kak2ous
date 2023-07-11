@@ -22,13 +22,15 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
       endTime: fields[1] as String,
       excessCosts: (fields[2] as List).cast<ExcessCostsModel>(),
       price: fields[4] as int,
+      isEnded: fields[5] as bool,
+      descripstions: fields[6] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, UserModel obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.startTime)
       ..writeByte(1)
@@ -38,7 +40,11 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
       ..writeByte(3)
       ..write(obj.systemNumber)
       ..writeByte(4)
-      ..write(obj.price);
+      ..write(obj.price)
+      ..writeByte(5)
+      ..write(obj.isEnded)
+      ..writeByte(6)
+      ..write(obj.descripstions);
   }
 
   @override

@@ -14,12 +14,17 @@ class UserModel {
   final String systemNumber;
   @HiveField(4)
   final int price;
-
+  @HiveField(5)
+  final bool isEnded;
+  @HiveField(6)
+  final String descripstions;
   UserModel({
     required this.systemNumber,
     required this.startTime,
     required this.endTime,
     required this.excessCosts,
     required this.price,
+    required this.isEnded,
+    required this.descripstions,
   });
 }

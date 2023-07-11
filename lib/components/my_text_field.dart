@@ -6,16 +6,24 @@ class MyTextField extends StatelessWidget {
     super.key,
     required this.controller,
     this.isNumber,
+    this.autoFocus,
+    this.onSubmitted,
+    this.label,
   });
   final TextEditingController controller;
   final bool? isNumber;
+  final bool? autoFocus;
+  final String? label;
+  final Function(String)? onSubmitted;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+        autofocus: autoFocus ?? false,
         controller: controller,
         textAlign: TextAlign.center,
         keyboardType: const TextInputType.numberWithOptions(decimal: true),
+        onSubmitted: onSubmitted,
         inputFormatters: isNumber == null || isNumber == false
             ? null
             : [
@@ -27,9 +35,15 @@ class MyTextField extends StatelessWidget {
                   ),
                 ),
               ],
-        decoration: const InputDecoration(
-            constraints: BoxConstraints(maxHeight: 30),
-            border: OutlineInputBorder(),
-            contentPadding: EdgeInsets.symmetric(horizontal: 5)));
+        decoration: InputDecoration(
+          constraints: const BoxConstraints(maxHeight: 40),
+          fillColor: Colors.blueGrey.withOpacity(0.1),
+          filled: true,
+          label: Center(child: Text(label ?? '')),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(5),
+              borderSide: BorderSide.none),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 5),
+        ));
   }
 }
